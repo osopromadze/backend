@@ -3,7 +3,6 @@ package science.icebreaker.device_availability;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
