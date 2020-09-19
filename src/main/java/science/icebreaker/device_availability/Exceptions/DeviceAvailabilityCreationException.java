@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 
 @ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)
 public class DeviceAvailabilityCreationException extends Exception {
-	public DeviceAvailabilityCreationException(String msg) {
+    public DeviceAvailabilityCreationException(String msg) {
         super(msg);
     }
 }

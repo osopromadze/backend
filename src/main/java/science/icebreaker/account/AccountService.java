@@ -9,7 +9,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import science.icebreaker.config.SecurityConfig;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -72,20 +71,26 @@ public class AccountService {
 
 
     /**
-     * This function checks if an Account contains the required information to be created. The following fields are
+     * This function checks if an Account contains the required information to be created.
+     * The following fields are
      * expected to be not empty: forename, surname, email, password, institution, city.
      * The email has to have the correct format.
-     *
+     * @param registration The registeration request
      * @return true if the account is valid; false otherwise
      */
     public boolean validateRegistration(RegistrationRequest registration) {
         Account account = registration.getAccount();
         AccountProfile profile = registration.getProfile();
-        return !profile.getForename().isBlank() &&
-                !profile.getSurname().isBlank() &&
-                !profile.getInstitution().isBlank() &&
-                !account.getEmail().isBlank() &&
-                !account.getPassword().isBlank() &&
+        return !profile.getForename().isBlank()
+                &&
+                !profile.getSurname().isBlank()
+                &&
+                !profile.getInstitution().isBlank()
+                &&
+                !account.getEmail().isBlank()
+                &&
+                !account.getPassword().isBlank()
+                &&
                 EmailValidator.getInstance().isValid(account.getEmail());
     }
 
@@ -134,8 +139,8 @@ public class AccountService {
         if (account.getId() != null) {
             throw new IllegalArgumentException("The account id is not null.");
         }
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(account.getEmail(),
-                account.getPassword()));
+        authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(account.getEmail(), account.getPassword()));
         return generateJwtToken(account);
     }
 

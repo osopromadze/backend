@@ -21,6 +21,7 @@ import science.icebreaker.account.Account;
 import science.icebreaker.device_availability.Exceptions.DeviceAvailabilityCreationException;
 import springfox.documentation.annotations.ApiIgnore;
 
+
 @RestController
 @RequestMapping("/device-availability")
 public class DeviceAvailabilityController {
@@ -46,13 +47,14 @@ public class DeviceAvailabilityController {
             addDeviceAvailabilityRequest.getGermanPostalCode(),
             addDeviceAvailabilityRequest.getInstitution(),
             addDeviceAvailabilityRequest.getResearchGroup(),
-            (Account)principal.getPrincipal()
+            (Account) principal.getPrincipal()
         );
     }
 
     @GetMapping("/")
-    @ApiParam(name="device")
-    public List<GetDeviceAvailabilityResponse> getDeviceAvailability(@RequestParam(name="device") Integer deviceId) {
+    @ApiParam(name = "device")
+    public List<GetDeviceAvailabilityResponse> getDeviceAvailability(
+        @RequestParam(name = "device") Integer deviceId) {
         return service.getDeviceAvailability(deviceId)
                 .stream()
                 .map(GetDeviceAvailabilityResponse::fromEntity)

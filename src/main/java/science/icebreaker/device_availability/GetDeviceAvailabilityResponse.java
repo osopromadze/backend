@@ -7,8 +7,13 @@ public class GetDeviceAvailabilityResponse {
     private String institution;
     private String researchGroup;
 
-    public GetDeviceAvailabilityResponse(Integer accountId, String comment, String germanPostalCode, String institution,
-        String researchGroup) {
+    public GetDeviceAvailabilityResponse(
+        Integer accountId,
+        String comment,
+        String germanPostalCode,
+        String institution,
+        String researchGroup
+    ) {
         this.accountId = accountId;
         this.comment = comment;
         this.germanPostalCode = germanPostalCode;
@@ -58,7 +63,7 @@ public class GetDeviceAvailabilityResponse {
 
     public static GetDeviceAvailabilityResponse fromEntity(DeviceAvailability deviceAvailability) {
         return new GetDeviceAvailabilityResponse(
-            deviceAvailability.getAccount().getId(), 
+            deviceAvailability.getAccount().getId(),
             deviceAvailability.getComment(),
             deviceAvailability.getGermanPostalCode(),
             deviceAvailability.getInstitution(),

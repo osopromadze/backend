@@ -1,7 +1,11 @@
 package science.icebreaker.account;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 
@@ -19,7 +23,8 @@ public class AccountController {
 
 
     @PostMapping("/register")
-    public int register(@RequestBody RegistrationRequest registrationRequest) throws AccountCreationException {
+    public int register(@RequestBody RegistrationRequest registrationRequest)
+    throws AccountCreationException {
         return service.createAccount(registrationRequest);
     }
 
